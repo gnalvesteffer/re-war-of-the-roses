@@ -53,9 +53,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="REVERSE-ENGINEERING.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="README.md" />
   </ItemGroup>
 </Project>
