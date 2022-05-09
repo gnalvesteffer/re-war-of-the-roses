@@ -3,6 +3,7 @@
 #include "LuaDumper.h"
 #include "Tools.h"
 
+static std::string _luaScriptOutputDirectory;
 static luaL_loadbuffer _luaLoadBufferOriginal = reinterpret_cast<luaL_loadbuffer>(GetProcAddress(GetModuleHandle(NULL), "luaL_loadbuffer"));
 static luaL_loadbuffer _luaLoadBufferTrampoline;
 
@@ -13,14 +14,29 @@ int __cdecl LuaLoadBufferHook(
     const char* name
 )
 {
-    std::cout << "LuaLoadBufferHook: Processing script \"" << name << "\"" << std::endl;
-    // TODO: dump script contents to files
+    auto luaScriptFilePath = _luaScriptOutputDirectory + name;
+    std::replace(luaScriptFilePath.begin(), luaScriptFilePath.end(), '/', '\\'); // Sanitize file path, replacing forward slashes with backslashes.
+    std::cout << "LuaDumper | Processing script: " << name << ", Output: " << luaScriptFilePath << std::endl;
+
+    // Dump Lua script to file.
+    auto luaScriptDirectory = luaScriptFilePath.substr(0, luaScriptFilePath.find_last_of('\\'));
+    std::filesystem::create_directories(luaScriptDirectory);
+    std::ofstream luaScriptFileStream(luaScriptFilePath);
+    for (UINT characterIndex = 0; characterIndex < sz; ++characterIndex)
+    {
+        luaScriptFileStream << buff[characterIndex];
+    }
+    luaScriptFileStream.close();
+
     return _luaLoadBufferTrampoline(L, buff, sz, name);
 }
 
-void XorberaxMod::LuaDumper::Initialize()
+void XorberaxMod::LuaDumper::Start()
 {
-    std::cout << "LuaDumper attempting to install hook for luaL_loadbuffer (" << _luaLoadBufferOriginal << ") with " << LuaLoadBufferHook << "." << std::endl;
+    std::cout << "LuaDumper | Enter output directory (ensure path ends with \"\\\"): ";
+    std::getline(std::cin, _luaScriptOutputDirectory);
+    std::cout << std::endl;
+    std::cout << "LuaDumper | Attempting to install hook for luaL_loadbuffer (" << _luaLoadBufferOriginal << ") with " << LuaLoadBufferHook << "." << std::endl;
     _luaLoadBufferTrampoline = (luaL_loadbuffer)Tools::TrampolineHook32((char*)_luaLoadBufferOriginal, (char*)LuaLoadBufferHook, 7);
-    std::cout << "LuaDumper hook installation succeeded!" << std::endl;
+    std::cout << "LuaDumper | Hook installation succeeded!" << std::endl;
 }

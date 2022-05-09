@@ -19,7 +19,7 @@ bool XorberaxMod::Start()
     std::cout << "WotR Xorberax Mod Injected!" << std::endl;
 
 #ifdef XORBERAX_LUADUMPER
-    XorberaxMod::LuaDumper::Initialize();
+    XorberaxMod::LuaDumper::Start();
 #endif
 
     return TRUE;
