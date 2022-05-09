@@ -1,9 +1,16 @@
 # War of the Roses
 A reverse-engineering effort to revive the discontinued live-service game "War of the Roses".
 
-Built for wotr-beta.exe (War of the Roses Balance Beta).
+Built for the War of the Roses Balance Beta (available on Steam if you own WotR).
+This reverse engineering effort is focused on the Balance Beta specifically because it is the only branch of the game that I can get to run. 
+The main branch crashes at startup, so I figured the Balance Beta would be a suitable starting point, as it displays splash videos, and attempts to load the game (but fails to connect to the official backend services).
+
+## Prerequisites
+- Must already own `War of the Roses` on Steam.
+    - You can no longer purchase the game, as it has been delisted.
 
 ## Installation
+- Install `War of the Roses`
 - Install the `War of the Roses Balance Beta`
 - Create a shortcut to wotr.exe and add the following command line argument: `-bundle-dir bundle`
 - Copy the following to your `War of the Roses Balance Beta` installation directory (should be named "War of the Roses Alpha"):
