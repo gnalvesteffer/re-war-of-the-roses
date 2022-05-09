@@ -2,13 +2,13 @@
 #include "NativeFunctions.h"
 #include "LuaDumper.h"
 #include "Tools.h"
+#include "luajit.h"
 
 static std::string _luaScriptOutputDirectory;
 static luaL_loadbuffer _luaLoadBufferOriginal = reinterpret_cast<luaL_loadbuffer>(GetProcAddress(GetModuleHandle(NULL), "luaL_loadbuffer"));
 static luaL_loadbuffer _luaLoadBufferTrampoline;
 
-int __cdecl LuaLoadBufferHook(
-    lua_State* L,
+void DumpLuaScript(
     const char* buff,
     size_t sz,
     const char* name
@@ -27,7 +27,16 @@ int __cdecl LuaLoadBufferHook(
         luaScriptFileStream << buff[characterIndex];
     }
     luaScriptFileStream.close();
+}
 
+int __cdecl LuaLoadBufferHook(
+    lua_State* L,
+    const char* buff,
+    size_t sz,
+    const char* name
+)
+{
+    DumpLuaScript(buff, sz, name);
     return _luaLoadBufferTrampoline(L, buff, sz, name);
 }
 
