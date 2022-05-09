@@ -7,13 +7,12 @@ The main branch crashes at startup, so I figured the Balance Beta would be a sui
 
 ## Prerequisites
 - Must already own `War of the Roses` on Steam.
-    - You can no longer purchase the game, as it has been delisted.
+    - NOTE: You can no longer purchase the game, as it has been delisted.
 
 ## Installation
 - Install `War of the Roses`
 - Install the `War of the Roses Balance Beta`
 - Create a shortcut to wotr.exe and add the following command line argument: `-bundle-dir bundle`
-- Copy the following to your `War of the Roses Balance Beta` installation directory (should be named "War of the Roses Alpha"):
-    - XorberaxMod.dll
 - Use a DLL Injector (such as XenoInjector) to inject XorberaxMod.dll into the game on startup.
+    - NOTE: It is important that the DLL is injected as soon as the game is launched.
 - If successful, a console should appear with the message `WotR Xorberax Mod Injected!`.
