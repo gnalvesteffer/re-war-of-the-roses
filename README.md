@@ -1,5 +1,5 @@
 # War of the Roses
-A reverse-engineering effort to revive the discontinued live-service game "War of the Roses".
+A reverse-engineering effort to revive the abandonware live-service game "War of the Roses", which was shutdown many years ago and unable to be played.
 
 Built for the War of the Roses Balance Beta (available on Steam if you own WotR).
 This reverse engineering effort is focused on the Balance Beta specifically because it is the only branch of the game that I can get to run. 
