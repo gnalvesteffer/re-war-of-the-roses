@@ -2,7 +2,6 @@
 #include "NativeFunctions.h"
 #include "LuaDumper.h"
 #include "Tools.h"
-#include "luajit.h"
 
 static std::string _luaScriptOutputDirectory;
 static luaL_loadbuffer _luaLoadBufferOriginal = reinterpret_cast<luaL_loadbuffer>(GetProcAddress(GetModuleHandle(NULL), "luaL_loadbuffer"));
