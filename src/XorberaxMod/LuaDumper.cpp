@@ -22,7 +22,7 @@ int __cdecl LuaLoadBufferHook(
     auto luaScriptDirectory = luaScriptFilePath.substr(0, luaScriptFilePath.find_last_of('\\'));
     std::filesystem::create_directories(luaScriptDirectory);
     std::ofstream luaScriptFileStream(luaScriptFilePath);
-    for (UINT characterIndex = 0; characterIndex < sz; ++characterIndex)
+    for (size_t characterIndex = 0; characterIndex < sz; ++characterIndex)
     {
         luaScriptFileStream << buff[characterIndex];
     }
