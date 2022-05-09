@@ -22,25 +22,5 @@ bool XorberaxMod::Start()
     XorberaxMod::LuaDumper::Initialize();
 #endif
 
-#ifdef XORBERAX_INTERACTIVE
-    while (TRUE)
-    {
-        static int option;
-        std::cout << "Choose option:" << std::endl;
-        std::cout << "1 - Lua Dumper" << std::endl;
-        std::cout << std::endl;
-        std::cout << "Option: ";
-        std::cin >> option;
-
-        switch (option)
-        {
-        case 1:
-            _luaDumper.Initialize();
-        }
-
-        std::cout << std::endl << "--------------------" << std::endl;
-    }
-#endif
-
     return TRUE;
 }
