@@ -1,6 +1,6 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "pch.h"
-#include "XorberaxMod.h"
+#include "Mod.h"
 
 BOOL APIENTRY DllMain(
     HMODULE hModule,
@@ -11,7 +11,8 @@ BOOL APIENTRY DllMain(
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        XorberaxMod::Start();
+        static XorberaxMod::Mod mod;
+        mod.Start();
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:

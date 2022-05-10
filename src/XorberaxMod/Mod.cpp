@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Tools.h"
-#include "XorberaxMod.h"
+#include "Mod.h"
 #include "LuaDumper.h"
+#include "LuaReplacer.h"
+#include "Mod.h"
 
-void ShowConsole()
+void XorberaxMod::Mod::ShowConsole()
 {
     AllocConsole();
     freopen_s(reinterpret_cast<FILE**>stdout, "CONOUT$", "w", stdout);
@@ -12,15 +14,17 @@ void ShowConsole()
     SetConsoleTitle(L"WotR Xorberax Mod");
 }
 
-bool XorberaxMod::Start()
+void XorberaxMod::Mod::Start()
 {
     Tools::seed_random();
     ShowConsole();
     std::cout << "WotR Xorberax Mod Injected!" << std::endl;
 
 #ifdef XORBERAX_LUADUMPER
-    XorberaxMod::LuaDumper::Start();
+    this->_luaDumper.Start();
 #endif
 
-    return TRUE;
+#ifdef XORBERAX_LUAREPLACER
+    this->_luaReplacer.Start();
+#endif
 }

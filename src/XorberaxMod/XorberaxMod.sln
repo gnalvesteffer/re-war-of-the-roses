@@ -9,12 +9,18 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		LuaDumper|x64 = LuaDumper|x64
 		LuaDumper|x86 = LuaDumper|x86
+		LuaReplacer|x64 = LuaReplacer|x64
+		LuaReplacer|x86 = LuaReplacer|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaDumper|x64.ActiveCfg = LuaDumper|x64
 		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaDumper|x64.Build.0 = LuaDumper|x64
 		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaDumper|x86.ActiveCfg = LuaDumper|Win32
 		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaDumper|x86.Build.0 = LuaDumper|Win32
+		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaReplacer|x64.ActiveCfg = LuaReplacer|x64
+		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaReplacer|x64.Build.0 = LuaReplacer|x64
+		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaReplacer|x86.ActiveCfg = LuaReplacer|Win32
+		{DC2E934E-8244-4568-98C3-CBDA15E30536}.LuaReplacer|x86.Build.0 = LuaReplacer|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

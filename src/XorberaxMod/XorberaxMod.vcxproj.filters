@@ -24,13 +24,16 @@
     <ClInclude Include="Tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="XorberaxMod.h">
+    <ClInclude Include="Mod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaDumper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NativeFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaReplacer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,10 +47,13 @@
     <ClCompile Include="Tools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="XorberaxMod.cpp">
+    <ClCompile Include="Mod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaDumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaReplacer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
