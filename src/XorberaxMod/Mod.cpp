@@ -3,9 +3,10 @@
 #include "Mod.h"
 #include "LuaDumper.h"
 #include "LuaReplacer.h"
-#include "Mod.h"
 
-void XorberaxMod::Mod::ShowConsole()
+using namespace Xorberax;
+
+static void ShowConsole()
 {
     AllocConsole();
     freopen_s(reinterpret_cast<FILE**>stdout, "CONOUT$", "w", stdout);
@@ -14,17 +15,17 @@ void XorberaxMod::Mod::ShowConsole()
     SetConsoleTitle(L"WotR Xorberax Mod");
 }
 
-void XorberaxMod::Mod::Start()
+void Xorberax::Mod::Start()
 {
     Tools::seed_random();
     ShowConsole();
     std::cout << "WotR Xorberax Mod Injected!" << std::endl;
 
 #ifdef XORBERAX_LUADUMPER
-    this->_luaDumper.Start();
+    LuaDumper::Start();
 #endif
 
 #ifdef XORBERAX_LUAREPLACER
-    this->_luaReplacer.Start();
+    LuaReplacer::Start();
 #endif
 }

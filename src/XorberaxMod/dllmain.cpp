@@ -2,6 +2,8 @@
 #include "pch.h"
 #include "Mod.h"
 
+using namespace Xorberax;
+
 BOOL APIENTRY DllMain(
     HMODULE hModule,
     DWORD  ul_reason_for_call,
@@ -11,8 +13,7 @@ BOOL APIENTRY DllMain(
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        static XorberaxMod::Mod mod;
-        mod.Start();
+        Mod::Start();
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
@@ -21,4 +22,3 @@ BOOL APIENTRY DllMain(
     }
     return TRUE;
 }
-

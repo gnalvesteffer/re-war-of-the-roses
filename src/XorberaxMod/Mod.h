@@ -2,15 +2,7 @@
 #include "LuaDumper.h"
 #include "LuaReplacer.h"
 
-namespace XorberaxMod
+namespace Xorberax::Mod
 {
-    class Mod
-    {
-    public:
-        void Start();
-    private:
-        XorberaxMod::LuaReplacer _luaReplacer;
-        XorberaxMod::LuaDumper _luaDumper;
-        void ShowConsole();
-    };
+	void Start();
 };

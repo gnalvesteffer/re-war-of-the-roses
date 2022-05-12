@@ -3,11 +3,13 @@
 #include "LuaDumper.h"
 #include "Tools.h"
 
+using namespace Xorberax::NativeFunctions;
+
 static std::string _luaScriptReplacementDirectory;
 static luaL_loadbuffer _luaLoadBufferOriginal = reinterpret_cast<luaL_loadbuffer>(GetProcAddress(GetModuleHandle(NULL), "luaL_loadbuffer"));
 static luaL_loadbuffer _luaLoadBufferTrampoline;
 
-void XorberaxMod::LuaDumper::DumpLuaScript(
+static void DumpLuaScript(
     const char* buff,
     size_t sz,
     const char* name
@@ -28,23 +30,23 @@ void XorberaxMod::LuaDumper::DumpLuaScript(
     luaScriptFileStream.close();
 }
 
-int __cdecl XorberaxMod::LuaDumper::LuaLoadBufferHook(
+static int __cdecl LuaLoadBufferHook(
     lua_State* L,
     const char* buff,
     size_t sz,
     const char* name
 )
 {
-    XorberaxMod::LuaDumper::DumpLuaScript(buff, sz, name);
+    DumpLuaScript(buff, sz, name);
     return _luaLoadBufferTrampoline(L, buff, sz, name);
 }
 
-void XorberaxMod::LuaDumper::Start()
+void Xorberax::LuaDumper::Start()
 {
     std::cout << "LuaDumper | Enter output directory (ensure path ends with \"\\\"): ";
     std::getline(std::cin, _luaScriptReplacementDirectory);
     std::cout << std::endl;
-    std::cout << "LuaDumper | Attempting to install hook for luaL_loadbuffer (" << _luaLoadBufferOriginal << ") with " << XorberaxMod::LuaDumper::LuaLoadBufferHook << "." << std::endl;
-    _luaLoadBufferTrampoline = (luaL_loadbuffer)Tools::TrampolineHook32((char*)_luaLoadBufferOriginal, (char*)XorberaxMod::LuaDumper::LuaLoadBufferHook, 7);
+    std::cout << "LuaDumper | Attempting to install hook for luaL_loadbuffer (" << _luaLoadBufferOriginal << ") with " << LuaLoadBufferHook << "." << std::endl;
+    _luaLoadBufferTrampoline = (luaL_loadbuffer)Tools::TrampolineHook32((char*)_luaLoadBufferOriginal, (char*)LuaLoadBufferHook, 7);
     std::cout << "LuaDumper | Hook installation succeeded!" << std::endl;
 }

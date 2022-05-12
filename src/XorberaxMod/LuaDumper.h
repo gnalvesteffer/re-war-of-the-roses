@@ -1,17 +1,7 @@
 #pragma once
 #include "luajit.h"
 
-namespace XorberaxMod
+namespace Xorberax::LuaDumper
 {
-    class LuaDumper
-    {
-    public:
-        /// <summary>
-        /// Hooks luaL_loadbuffer to dump lua scripts as they are loaded.
-        /// </summary>
-        static void Start();
-    private:
-        static void DumpLuaScript(const char* buff, size_t sz, const char* name);
-        static int __cdecl LuaLoadBufferHook(lua_State* L, const char* buff, size_t sz, const char* name);
-    };
+    void Start();
 }
