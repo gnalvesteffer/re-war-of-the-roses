@@ -9,6 +9,9 @@ static std::string _luaScriptReplacementDirectory;
 static luaL_loadbuffer _luaLoadBufferOriginal = reinterpret_cast<luaL_loadbuffer>(GetProcAddress(GetModuleHandle(NULL), "luaL_loadbuffer"));
 static luaL_loadbuffer _luaLoadBufferTrampoline;
 
+/*
+    BUG: Game crashes when replacing Lua script from file. Need to investigate.
+*/
 static std::string* GetReplacementLuaScript(
     const char* buff,
     size_t sz,
